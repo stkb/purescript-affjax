@@ -24,8 +24,7 @@ exports._ajax = function (mkHeader, options, canceler, errback, callback) {
     };
 
     platformSpecific.getResponse = function (xhr) {
-      // the node package 'xmlhttprequest' does not support xhr.response.
-      return xhr.responseText;
+      return xhr.response;
     };
   } else {
     // We are in the browser
