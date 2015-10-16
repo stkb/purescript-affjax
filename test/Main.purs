@@ -74,7 +74,7 @@ main = runAff (\e -> print e >>= \_ -> throwException e) (const $ log "affjax: A
   A.log "GET /mirror: should be 200 OK"
   (attempt $ affjax $ defaultRequest { url = mirror }) >>= assertRight >>= \res -> do
     typeIs (res :: AffjaxResponse Foreign)
-    assertEq ok200 res.status
+    assertEq notFound404 res.status
 
   A.log "GET /does-not-exist: should be 404 Not found"
   (attempt $ affjax $ defaultRequest { url = doesNotExist }) >>= assertRight >>= \res -> do
